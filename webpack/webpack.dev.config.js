@@ -1,10 +1,25 @@
-const path = require( 'path' );
+const path = require('path');
+const webpack = require('webpack');
+const merge = require( 'webpack-merge' );
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const base = require( './webpack.common.config' );
 
-module.exports = {
+module.exports = merge( base, {
     mode: 'development',
-    entry: path.resolve( __dirname, '../index.js' ),
-    output:{
-        path:path.resolve( __dirname, '../runtime' ),
-        filename: '[name].bundle.js'
-    }
-}
+    devServer: {
+        contentBase: path.resolve( __dirname, '../runtime' ),
+        hot: true,
+        port: 1111,
+        inline: true,
+        compress: true,
+        open: true,
+        proxy: {
+
+        },
+        stats:"minimal"
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new CleanWebpackPlugin(['runtime'],{root:path.resolve(__dirname, '../')}),
+    ]
+} )
