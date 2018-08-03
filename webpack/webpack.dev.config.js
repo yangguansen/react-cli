@@ -15,11 +15,14 @@ module.exports = merge( base, {
         open: true,
         proxy: {
 
-        },
-        stats:"minimal"
+        }
     },
+    devtool: 'cheap-module-source-map',
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin(['runtime'],{root:path.resolve(__dirname, '../')}),
-    ]
+    ],
+    performance: {
+        hints: false
+    },
 } )

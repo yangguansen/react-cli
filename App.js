@@ -5,7 +5,6 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                sdsada111112222
                 <DashBoard></DashBoard>
             </div>
         )
