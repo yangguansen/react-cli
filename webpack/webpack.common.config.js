@@ -2,6 +2,7 @@ const path = require( 'path' );
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' )
 
+
 module.exports = {
     entry: path.resolve( __dirname, '../index.js' ),
     output: {
@@ -22,6 +23,7 @@ module.exports = {
         new webpack.DefinePlugin( {
             'process.env': { NODE_ENV: '"development"' }
         } ),
+
         new HtmlWebpackPlugin( { template: path.resolve( __dirname, '../index.html' ) } ),
         new webpack.NamedModulesPlugin(),
     ],
