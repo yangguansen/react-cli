@@ -18,35 +18,7 @@ module.exports = merge( base, {
     },
     module:{
         rules:[
-            {
-                test: /\.(css|less)$/,
-                use: [
-                    "style-loader",
-                    {
-                        loader:"css-loader",
-                        options:{
-                            modules: true,
-                            localIdentName: "[local]_[hash:base64:5]"
-                        }
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options:{
-                            plugins:() =>[
-                                autoprefixer({
-                                    browsers: [
-                                        '>1%',
-                                        'last 4 versions',
-                                        'Firefox ESR',
-                                        'not ie < 9', // React doesn't support IE8 anyway
-                                    ],
-                                    flexbox: 'no-2009',
-                                }),
-                            ]
-                        }
-                    }
-                ]
-            }
+
         ]
 
     },
