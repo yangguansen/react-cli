@@ -14,13 +14,27 @@ module.exports = merge( base, {
         open: true,
         proxy: {}
     },
-
+    module: {
+        rules:[
+            {
+                test: /\.(css|less)$/,
+                use: [
+                    'style-loader' ,
+                    {
+                        loader: require.resolve('css-loader'),
+                        options: {
+                            importLoaders: 1
+                        },
+                    },
+                    'postcss-loader',
+                    'less-loader'
+                ],
+            },
+        ]
+    },
     devtool: 'eval',
 
     plugins: [
-        new webpack.DefinePlugin( {
-            'process.env': { NODE_ENV: '"development"' }
-        } ),
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin( [ 'runtime' ], { root: path.resolve( __dirname, '../' ) } ),
     ],
