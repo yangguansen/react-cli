@@ -36,5 +36,21 @@ module.exports = merge( base, {
         } ),
         new webpack.NamedModulesPlugin(),
         new CleanWebpackPlugin( [ 'dist' ], { root: path.resolve( __dirname, '../' ) } ),
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    name: 'commons',
+                    chunks: 'initial',
+                    minChunks: 3
+                },
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    }
 } )
