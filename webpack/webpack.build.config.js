@@ -11,48 +11,51 @@ module.exports = merge( base, {
         path: path.resolve( __dirname, '../dist/' ),
         filename: 'js/[name].[chunkhash:8].js'
     },
-    module:{
-        rules:[
+    module: {
+        rules: [
             {
                 test: /\.(css|less)$/,
                 use: [
                     MiniCssExtractPlugin.loader,
                     {
-                        loader: require.resolve('css-loader'),
+                        loader: require.resolve( 'css-loader' ),
                         options: {
                             importLoaders: 1
                         },
                     },
-                    {
-                        loader: require.resolve('postcss-loader'),
-                        options: {
-                            // Necessary for external CSS imports to work
-                            // https://github.com/facebookincubator/create-react-app/issues/2677
-                            ident: 'postcss',
-                            plugins: () => [
-                                require('postcss-flexbugs-fixes'),
-                                autoprefixer({
-                                    browsers: [
-                                        '>1%',
-                                        'last 4 versions',
-                                        'Firefox ESR',
-                                        'not ie < 9', // React doesn't support IE8 anyway
-                                    ],
-                                    flexbox: 'no-2009',
-                                }),
-                            ],
-                        },
-                    },
+                    'postcss-loader',
+
                     'less-loader'
                 ],
             },
         ]
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            publicPath: '../dist',
-            filename: "[name].css",
-        }),
+
+
+        new MiniCssExtractPlugin( {
+            filename: "css/[name].[chunkhash:8].css",
+        } ),
+        new webpack.NamedModulesPlugin(),
+
         new CleanWebpackPlugin( [ 'dist' ], { root: path.resolve( __dirname, '../' ) } ),
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /\.js$/,
+                    name: 'commons',
+                    chunks: 'all',
+                    minChunks: 3,
+                    minSize: 0
+                },
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    }
 } )
