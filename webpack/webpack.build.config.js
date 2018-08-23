@@ -43,13 +43,6 @@ module.exports = merge( base, {
     optimization: {
         splitChunks: {
             cacheGroups: {
-                commons: {
-                    test: /\.js$/,
-                    name: 'commons',
-                    chunks: 'all',
-                    minChunks: 3,
-                    minSize: 0
-                },
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
