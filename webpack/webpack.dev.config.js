@@ -18,9 +18,6 @@ module.exports = merge( base, {
     devtool: 'eval',
 
     plugins: [
-        new webpack.DefinePlugin( {
-            'process.env': { NODE_ENV: '"development"' }
-        } ),
         new webpack.HotModuleReplacementPlugin(),
         new CleanWebpackPlugin( [ 'runtime' ], { root: path.resolve( __dirname, '../' ) } ),
     ],

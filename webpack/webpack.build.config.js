@@ -43,17 +43,12 @@ module.exports = merge( base, {
                             ],
                         },
                     },
-                    {
-                        loader: require.resolve('less-loader')
-                    }
+                    'less-loader'
                 ],
             },
         ]
     },
     plugins: [
-        new webpack.DefinePlugin( {
-            'process.env': { NODE_ENV: '"production"' }
-        } ),
         new MiniCssExtractPlugin({
             publicPath: '../dist',
             filename: "[name].css",
