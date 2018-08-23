@@ -41,9 +41,11 @@ module.exports = merge( base, {
         splitChunks: {
             cacheGroups: {
                 commons: {
+                    test: /\.js$/,
                     name: 'commons',
-                    chunks: 'initial',
-                    minChunks: 3
+                    chunks: 'all',
+                    minChunks: 3,
+                    minSize: 0
                 },
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
