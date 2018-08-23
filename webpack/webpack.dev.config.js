@@ -1,9 +1,7 @@
 const path = require( 'path' );
 const webpack = require( 'webpack' );
 const merge = require( 'webpack-merge' );
-const autoprefixer = require('autoprefixer');
 const CleanWebpackPlugin = require( 'clean-webpack-plugin' );
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const base = require( './webpack.common.config' );
 
 module.exports = merge( base, {
@@ -16,20 +14,28 @@ module.exports = merge( base, {
         open: true,
         proxy: {}
     },
-    module:{
+    module: {
         rules:[
-
+            {
+                test: /\.(css|less)$/,
+                use: [
+                    'style-loader' ,
+                    {
+                        loader: require.resolve('css-loader'),
+                        options: {
+                            importLoaders: 1
+                        },
+                    },
+                    'postcss-loader',
+                    'less-loader'
+                ],
+            },
         ]
-
     },
     devtool: 'eval',
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
-        }),
         new CleanWebpackPlugin( [ 'runtime' ], { root: path.resolve( __dirname, '../' ) } ),
     ],
     performance: {
