@@ -3,6 +3,7 @@
     <JSCodeStyleSettings>
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
       <option name="SPACE_BEFORE_FUNCTION_LEFT_PARENTH" value="false" />
+      <option name="REFORMAT_C_STYLE_COMMENTS" value="true" />
       <option name="USE_DOUBLE_QUOTES" value="false" />
       <option name="FORCE_QUOTE_STYlE" value="true" />
       <option name="ENFORCE_TRAILING_COMMA" value="Remove" />
@@ -28,6 +29,7 @@
       <option name="SPACE_WITHIN_CATCH_PARENTHESES" value="true" />
       <option name="SPACE_WITHIN_SWITCH_PARENTHESES" value="true" />
       <option name="SPACE_WITHIN_BRACKETS" value="true" />
+      <option name="KEEP_SIMPLE_METHODS_IN_ONE_LINE" value="true" />
       <option name="SOFT_MARGINS" value="100" />
       <indentOptions>
         <option name="INDENT_SIZE" value="2" />

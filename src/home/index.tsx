@@ -1,8 +1,14 @@
 import React from 'react';
+import { Button } from 'antd';
 
 class HomePage extends React.Component {
 	render() {
-		return <div>Home Page</div>;
+		console.log( 112 );
+		return (
+			<div>
+				<Button type="primary">Home Page</Button>
+			</div>
+		);
 	}
 }
 
