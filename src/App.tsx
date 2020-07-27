@@ -1,30 +1,46 @@
 import React from 'react';
-import './App.css';
+import styles from './App.module.scss';
 import 'antd/dist/antd.css';
 import HomePage from './home/index';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, withRouter, RouteComponentProps } from 'react-router-dom';
 import ExpensePage from './expense';
+import { Button } from 'antd';
+import appRoute from './route/index';
 
-function App( ) {
+function App( props: RouteComponentProps ) {
 
+	const toPage = ( page: string ): void => {
+		props.history.push( page );
+	};
 
 	return (
-		<div className="App">
 
-			<Router>
-				<Link to='/home'>to home</Link>
-				<br/>
-				<Link to='/expense'>to expense</Link>
-				<Switch>
-					<Route path="/home" component={HomePage}></Route>
-					<Route path="/expense" component={ExpensePage}></Route>
-				</Switch>
+		<div className={styles.App}>
+			<div className={styles.menu}>
+				{
+					appRoute.map( ( { path, component } ) => {
+						return (
+							<Button type="link" onClick={( event: React.MouseEvent ) => toPage( path )} key={path}>{path}</Button>
+						);
+					} )
+				}
+			</div>
 
-			</Router>
+			<Switch>
+				<Route path="/home" component={HomePage}></Route>
+				<Route path="/expense" component={ExpensePage}></Route>
+				{
+					appRoute.map( ( { path, component } ) => {
+						return (
+							<Route path={path} component={component} key={path}></Route>
+						);
+					} )
+				}
+			</Switch>
 		</div>
 
-
 	);
+
 }
 
-export default App;
+export default withRouter( App );

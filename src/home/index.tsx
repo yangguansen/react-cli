@@ -1,12 +1,15 @@
 import React from 'react';
 import { Button } from 'antd';
+import { RouteComponentProps } from 'react-router';
 
-class HomePage extends React.Component {
+class HomePage extends React.Component<RouteComponentProps> {
 	render() {
-		console.log( 112 );
 		return (
 			<div>
-				<Button type="primary">Home Page</Button>
+				<Button type="dashed" onClick={( event: React.MouseEvent ) => this.props.history.push( '/expense' )}>
+					Home Page
+				</Button>
+
 			</div>
 		);
 	}

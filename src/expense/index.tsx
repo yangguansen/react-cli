@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import myContext from '../pages/UseContext/contextProperty';
 
-class ExpensePage extends React.Component {
-	render() {
-		return <div>Expense Page</div>;
-	}
+function ExpensePage() {
+
+	const count = useContext( myContext );
+	console.log( count );
+	return (
+		<div>
+			<p>expense: You clicked {count} times</p>
+
+		</div>
+	);
+
 }
 
 export default ExpensePage;

@@ -338,8 +338,7 @@ module.exports = function(webpackEnv) {
                 resolvePluginsRelativeTo: __dirname,
 								emitError: isEnvDevelopment,
 								emitWarning: isEnvDevelopment,
-								configFile: '.eslintrc.json',
-                fix: true
+								configFile: '.eslintrc.json'
               },
               loader: require.resolve('eslint-loader'),
             },

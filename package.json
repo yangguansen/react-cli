@@ -76,21 +76,22 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "> 1%",
+      "last 2 versions",
+      "not ie <= 8"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "> 1%",
+      "last 2 versions",
+      "not ie <= 8"
     ]
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^3.7.0",
     "@typescript-eslint/parser": "^3.7.0",
     "eslint": "^7.5.0",
-    "eslint-plugin-react": "^7.20.3"
+    "eslint-plugin-react": "^7.20.3",
+    "node-sass": "^4.14.1"
   },
   "jest": {
     "roots": [
