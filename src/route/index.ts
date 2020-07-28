@@ -1,5 +1,6 @@
 import UseStatePage from '../pages/UseState';
 import UseContextPage from '../pages/UseContext';
+import DemoPage from '../pages/Demo';
 
 export default [
 	{
@@ -9,5 +10,9 @@ export default [
 	{
 		path: '/UseContext',
 		component: UseContextPage
+	},
+	{
+		path: '/demo',
+		component: DemoPage
 	}
 ];

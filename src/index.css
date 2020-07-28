@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root{
+  height: 100%;
+}
+
+/* 修改UI全局样式 begin*/
+header.ant-layout-header{
+  background: #000;
+}
+
+.ant-menu{
+  background: #000;
+  color: #fff;
+}
+.ant-menu-submenu > .ant-menu{
+  background: #000;
+}
+
+.ant-menu-submenu-selected, .ant-menu-submenu-active, .ant-menu-item-selected, .ant-menu-item-active {
+  color: #86bc25;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+  background: none;
+}
+
+.ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
+  border-color: #86bc25;
+}
+
+.ant-row{
+  width: 100%;
+}
+.ant-row + .ant-row{
+  margin-top: 20px;
+}
+/* 修改UI全局样式  end */
