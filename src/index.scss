@@ -29,8 +29,8 @@ header.ant-layout-header{
   background: #000;
 }
 
-.ant-menu-submenu-selected, .ant-menu-submenu-active, .ant-menu-item-selected, .ant-menu-item-active {
-  color: #86bc25;
+.ant-menu-submenu-selected, .ant-menu-submenu-active, .ant-menu-item-selected, .ant-menu-item-active, .ant-menu-item:hover, .ant-menu-submenu-title:hover {
+  color: $green;
 }
 
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
@@ -38,13 +38,31 @@ header.ant-layout-header{
 }
 
 .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after{
-  border-color: #86bc25;
+  border-color: $green;
 }
-
+.ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before, .ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after {
+  background: linear-gradient(to right, $green, $green);
+}
 .ant-row{
   width: 100%;
 }
-.ant-row + .ant-row{
-  margin-top: 20px;
+
+.ant-layout{
+  width: 100%;
+}
+.ant-btn-primary, .ant-btn-primary:hover, .ant-btn-primary:focus{
+  background: $green;
+  border-color: $green;
+}
+
+.ant-form-item .ant-select{
+  text-align: left;
 }
 /* 修改UI全局样式  end */
+
+
+/* 全局自定义样式 begin */
+.grey-button{
+  background: #f3f3f3;
+}
+/* 全局自定义样式 end */

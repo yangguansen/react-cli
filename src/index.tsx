@@ -1,14 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import './index.css';
+import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducer from 'src/store/index';
+
+let store = createStore( rootReducer, { demoState: { count: 0 } } );
+console.log( store.getState() );
+
 ReactDOM.render(
-	<Router>
-		<App />
-	</Router>,
+	<Provider store={store}>
+		<Router>
+			<App/>
+		</Router>
+	</Provider>,
 	document.getElementById( 'root' )
 );
 

@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './App.module.scss';
-
 import { Route, Switch, withRouter, RouteComponentProps } from 'react-router-dom';
 import { Button } from 'antd';
 import appRoute from './route/index';
 
 function App( props: RouteComponentProps ) {
-	console.log( props );
+
 	const toPage = ( page: string ): void => {
 		props.history.push( page );
 	};

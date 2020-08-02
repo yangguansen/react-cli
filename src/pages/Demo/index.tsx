@@ -1,6 +1,5 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
-import { NotificationOutlined } from '@ant-design/icons';
 import styles from './index.module.scss';
 import { menuData, bread } from './data';
 import ContentComponent from './content';
@@ -31,7 +30,7 @@ function DemoPage() {
 						{
 							menuData.map( ( { title, submenu }, index ) => {
 								return (
-									<SubMenu key={title} icon={<NotificationOutlined/>} title={title}>
+									<SubMenu key={title} title={title}>
 										{
 											submenu.map( ( child, subIndex ) => {
 												return (

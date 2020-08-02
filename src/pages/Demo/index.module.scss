@@ -38,6 +38,19 @@
     margin: 20px;
   }
   .wrap{
-    padding: 20px;
+    margin: 20px;
+
+  }
+
+  .line{
+    height: 1px;
+    border-bottom: 1px solid #ddd;
+    margin: 20px 0;
+  }
+}
+
+:global{
+  .demo-form .ant-form-item-label{
+    width: 100px;
   }
 }

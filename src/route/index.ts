@@ -1,6 +1,7 @@
 import UseStatePage from '../pages/UseState';
 import UseContextPage from '../pages/UseContext';
 import DemoPage from '../pages/Demo';
+import ReduxPage from '../pages/Redux';
 
 export default [
 	{
@@ -14,5 +15,9 @@ export default [
 	{
 		path: '/demo',
 		component: DemoPage
+	},
+	{
+		path: '/redux',
+		component: ReduxPage
 	}
 ];
