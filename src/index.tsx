@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from 'src/store/index';
 
-let store = createStore( rootReducer, { demoState: { count: 0 } } );
+let store = createStore( rootReducer );
 console.log( store.getState() );
 
 ReactDOM.render(

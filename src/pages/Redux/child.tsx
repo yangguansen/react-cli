@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 function ChildRedux( props: any ) {
 	return (
-		<p>child page count: {props.count}</p>
+		<p>demo child page count: {props.count}</p>
 	);
 }
 

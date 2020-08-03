@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Button } from 'antd';
 import { connect } from 'react-redux';
 import { addCount } from 'src/store/demo/actions';
+import { decreaseCount } from 'src/store/moduleTwo/actions';
 import PropTypes from 'prop-types';
 import ChildRedux from './child';
 
@@ -31,11 +32,14 @@ function ReduxPage( props: any ) {
 
 	return (
 		<div>
-			<p ref={pEl}>parents count: {props.count}</p>
+			<p ref={pEl}>demo module parents count: {props.count}</p>
 			<Button type="primary" onClick={() => {
-				props.addCount( props.count + 1 );
-			}}>Click</Button>
-
+				props.addCount( props.count );
+			}}>demo Add Click</Button>
+			<p>module two count: {props.count2}</p>
+			<Button type="primary" onClick={() => {
+				props.decreaseCount( props.count2 );
+			}}>module two decrease Click</Button>
 			<ChildRedux/>
 		</div>
 	);
@@ -43,7 +47,8 @@ function ReduxPage( props: any ) {
 
 const mapStateToProps = ( state: any ) => {
 	return {
-		count: state.demoState.count
+		count: state.demoState.count,
+		count2: state.moduleTwo.count2
 	};
 };
 
@@ -52,6 +57,9 @@ const mapDispatchToProps = ( dispatch: any ) => {
 		addCount: ( count: number ) => {
 			console.log( 1 );
 			dispatch( addCount( count ) );
+		},
+		decreaseCount: ( count: number ) => {
+			dispatch( decreaseCount( count ) );
 		}
 	};
 };
