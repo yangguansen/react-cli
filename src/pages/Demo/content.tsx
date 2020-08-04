@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styles from './index.module.scss';
 import { Form, Input, Select, Row, Col, Button, Table } from 'antd';
 import { dataList, columns } from './data';
 import { SearchOutlined, ClearOutlined, PlusCircleOutlined, ImportOutlined, ExportOutlined } from '@ant-design/icons';
+import PropTypes from 'prop-types';
 
 const { Option } = Select;
+
+interface colProps {
+	label: string;
+	children: ReactElement;
+}
+
+const GridCol: React.FC<colProps> = ( props ) => {
+	const { label } = props;
+	return (
+		<Col xs={24} sm={10} md={8} lg={8} xl={8}>
+			<Form.Item label={label}>
+				{props.children}
+			</Form.Item>
+		</Col>
+	);
+};
+
+GridCol.propTypes = {
+	label: PropTypes.string.isRequired,
+	children: PropTypes.element.isRequired
+};
 
 function ContentComponent() {
 	return (
@@ -14,63 +36,22 @@ function ContentComponent() {
 			<div className={styles.wrap}>
 				<Form layout="horizontal" colon={false} className="demo-form">
 					<Row justify="space-between">
-						<Col xs={24} sm={10} md={8} lg={8} xl={8}>
-							<Form.Item label="公司">
-								<Select placeholder="请选择">
-									<Option value="A公司">A公司</Option>
-									<Option value="B公司">B公司</Option>
-								</Select>
-							</Form.Item>
-						</Col>
 
-						<Col xs={24} sm={10} md={8} lg={8} xl={8}>
-							<Form.Item label="销售订单号">
-								<Input placeholder="请选择"/>
-							</Form.Item>
-						</Col>
+						<GridCol label='公司'>
+							<Select placeholder="请选择">
+								<Option value="A公司">A公司</Option>
+								<Option value="B公司">B公司</Option>
+							</Select>
+						</GridCol>
 
-						<Col xs={24} sm={10} md={8} lg={8} xl={8}>
-							<Form.Item label="订单类型">
-								<Input placeholder="请选择"/>
-							</Form.Item>
-						</Col>
+						<GridCol label='销售订单号'>
+							<Input placeholder="请选择"/>
+						</GridCol>
 
+						<GridCol label='订单类型'>
+							<Input placeholder="请选择"/>
+						</GridCol>
 
-						<Col xs={24} sm={10} md={8} lg={8} xl={8}>
-							<Form.Item label="客户">
-								<Input placeholder="请选择"/>
-							</Form.Item>
-						</Col>
-
-						<Col xs={24} sm={10} md={8} lg={8} xl={8}>
-							<Form.Item label="客户PO">
-								<Input placeholder="请选择"/>
-							</Form.Item>
-						</Col>
-
-						<Col xs={24} sm={10} md={8} lg={8} xl={8}>
-							<Form.Item label="审批状态">
-								<Input placeholder="请选择"/>
-							</Form.Item>
-						</Col>
-
-						<Col xs={24} sm={10} md={8} lg={8} xl={8}>
-							<Form.Item label="币种">
-								<Input placeholder="请选择"/>
-							</Form.Item>
-						</Col>
-
-						<Col xs={24} sm={10} md={8} lg={8} xl={8}>
-							<Form.Item label="业务员">
-								<Input placeholder="请选择"/>
-							</Form.Item>
-						</Col>
-
-						<Col xs={24} sm={10} md={8} lg={8} xl={8}>
-							<Form.Item label="订单日期">
-								<Input placeholder="请选择"/>
-							</Form.Item>
-						</Col>
 					</Row>
 
 					<Row>
@@ -89,15 +70,15 @@ function ContentComponent() {
 
 				<Row>
 					<Col span={12} style={{ textAlign: 'left' }}>
-						<Button type="primary"  icon={<PlusCircleOutlined />}>
+						<Button type="primary" icon={<PlusCircleOutlined/>}>
 							新建
 						</Button>
-						<Button style={{ margin: '0 0 0 8px' }} icon={<ImportOutlined />} className="grey-button">
+						<Button style={{ margin: '0 0 0 8px' }} icon={<ImportOutlined/>} className="grey-button">
 							模板导入
 						</Button>
 					</Col>
 					<Col span={12} style={{ textAlign: 'right' }}>
-						<Button icon={<ExportOutlined />} className="grey-button">
+						<Button icon={<ExportOutlined/>} className="grey-button">
 							导出
 						</Button>
 					</Col>
@@ -105,7 +86,7 @@ function ContentComponent() {
 
 				<div>
 					<Table scroll={{ x: '100%' }} tableLayout="fixed" columns={columns} dataSource={dataList}
-								 style={{ marginTop: '20px' }} bordered={true}
+								 style={{ marginTop: '20px' }} bordered={true} rowKey={row => row.key}
 								 size="middle"
 								 pagination={{ showSizeChanger: true, pageSize: 10, showTotal: total => `共 ${total} 条` }}/>
 				</div>
