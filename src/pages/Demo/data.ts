@@ -1,21 +1,3 @@
-export const menuData = [
-	{
-		title: '销售管理',
-		submenu: [ '销售订单管理', '销售订单发货', '销售订单退换货' ]
-	},
-	{
-		title: '库存管理',
-		submenu: [ '库存现有量查询', '其他类型入库', '其他类型出库' ]
-	},
-	{
-		title: '采购管理',
-		submenu: [ '采购订单管理', '采购订单入库', '采购订单退换货' ]
-	}
-];
-
-export const bread = [ '工作台', '供应链管理', '我的申请', '销售管理', '销售订单管理' ];
-
-
 export const columns = [
 	{
 		title: '公司',
@@ -69,7 +51,6 @@ export const columns = [
 	}
 
 ];
-
 
 export const dataList = [
 	{

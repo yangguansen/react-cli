@@ -1,65 +1,101 @@
-import React from 'react';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import React, { ReactElement } from 'react';
 import styles from './index.module.scss';
-import { menuData, bread } from './data';
-import ContentComponent from './content';
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+import { Form, Input, Select, Row, Col, Button, Table } from 'antd';
+import { dataList, columns } from './data';
+import { SearchOutlined, ClearOutlined, PlusCircleOutlined, ImportOutlined, ExportOutlined } from '@ant-design/icons';
+import PropTypes from 'prop-types';
 
+const { Option } = Select;
 
-function DemoPage() {
+interface colProps {
+	label: string;
+	children: ReactElement;
+}
+
+const GridCol: React.FC<colProps> = ( props ) => {
+	const { label } = props;
 	return (
-		<Layout className={styles.page}>
-			<Header className={styles.header}>
-				<div className={styles.logo}>
-					<img width={115} src={require( '../../assets/img/logo_deloitte.png' )} alt=""/>
-					<img width={128} src={require( '../../assets/img/BDH_wordmark_white.png' )} alt=""/>
-					<span>首页</span>
-					<span>工作台</span>
+		<Col xs={24} sm={10} md={8} lg={8} xl={8}>
+			<Form.Item label={label}>
+				{props.children}
+			</Form.Item>
+		</Col>
+	);
+};
+
+GridCol.propTypes = {
+	label: PropTypes.string.isRequired,
+	children: PropTypes.element.isRequired
+};
+
+function ContentComponent() {
+	return (
+		<div className={styles.page}>
+			<h1 className={styles.title}>销售订单</h1>
+
+			<div className={styles.wrap}>
+				<Form layout="horizontal" colon={false} className="demo-form">
+					<Row justify="space-between">
+
+						<GridCol label='公司'>
+							<Select placeholder="请选择">
+								<Option value="A公司">A公司</Option>
+								<Option value="B公司">B公司</Option>
+							</Select>
+						</GridCol>
+
+						<GridCol label='销售订单号'>
+							<Input placeholder="请选择"/>
+						</GridCol>
+
+						<GridCol label='订单类型'>
+							<Input placeholder="请选择"/>
+						</GridCol>
+
+					</Row>
+
+					<Row>
+						<Col span={24} style={{ textAlign: 'right' }}>
+							<Button type="primary" htmlType="submit" icon={<SearchOutlined/>}>
+								搜索
+							</Button>
+							<Button style={{ margin: '0 0 0 8px' }} icon={<ClearOutlined/>} className="grey-button">
+								清除
+							</Button>
+						</Col>
+					</Row>
+				</Form>
+
+				<div className={styles.line}></div>
+
+				<Row>
+					<Col span={12} style={{ textAlign: 'left' }}>
+						<Button type="primary" icon={<PlusCircleOutlined/>}>
+							新建
+						</Button>
+						<Button style={{ margin: '0 0 0 8px' }} icon={<ImportOutlined/>} className="grey-button">
+							模板导入
+						</Button>
+					</Col>
+					<Col span={12} style={{ textAlign: 'right' }}>
+						<Button icon={<ExportOutlined/>} className="grey-button">
+							导出
+						</Button>
+					</Col>
+				</Row>
+
+				<div>
+					<Table scroll={{ x: '100%' }} tableLayout="fixed" columns={columns} dataSource={dataList}
+								 style={{ marginTop: '20px' }} bordered={true} rowKey={row => row.key}
+								 size="middle"
+								 pagination={{ showSizeChanger: true, pageSize: 10, showTotal: total => `共 ${total} 条` }}/>
 				</div>
 
-			</Header>
-			<Layout className={styles.content}>
-				<Sider width={230} className="site-layout-background" breakpoint="lg" collapsedWidth="0">
-					<Menu
-						mode="inline"
-						defaultSelectedKeys={[ '1' ]}
-						defaultOpenKeys={[ menuData[ 0 ].title ]}
-						style={{ height: '100%', borderRight: 0 }}
-					>
-						{
-							menuData.map( ( { title, submenu }, index ) => {
-								return (
-									<SubMenu key={title} title={title}>
-										{
-											submenu.map( ( child, subIndex ) => {
-												return (
-													<Menu.Item key={index * menuData[ index ].submenu.length + subIndex}>{child}</Menu.Item>
-												);
-											} )
-										}
-									</SubMenu>
-								);
-							} )
-						}
+			</div>
 
-					</Menu>
-				</Sider>
-				<Layout>
-					<Breadcrumb className={styles.breadcrumb}>
-						{
-							bread.map( ( v, i ) => {
-								return <Breadcrumb.Item key={i}>{v}</Breadcrumb.Item>;
-							} )
-						}
-					</Breadcrumb>
-					<Content className={styles.sectionContent}>
-						<ContentComponent/>
-					</Content>
-				</Layout>
-			</Layout>
-		</Layout>
+
+		</div>
 	);
 }
 
-export default DemoPage;
+export default ContentComponent;

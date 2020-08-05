@@ -1,45 +1,31 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import styles from './App.module.scss';
-import { Route, Switch, withRouter, RouteComponentProps } from 'react-router-dom';
-import { Button } from 'antd';
+import { Route, Switch } from 'react-router-dom';
 import appRoute from './route/index';
+import LayoutComponent from 'src/pages/Components/Layout';
+import { Spin } from 'antd';
 
-function App( props: RouteComponentProps ) {
-
-	const toPage = ( page: string ): void => {
-		props.history.push( page );
-	};
-
+function App() {
 	return (
-
 		<div className={styles.App}>
-			{
-				props.location.pathname !== '/demo' ? (
-					<div className={styles.menu}>
+			<LayoutComponent>
+				<Suspense fallback={<Spin size="large" style={{ 'top': '50%', 'position': 'absolute' }}></Spin>}>
+					<Switch>
 						{
 							appRoute.map( ( { path, component } ) => {
 								return (
-									<Button type="link" onClick={( event: React.MouseEvent ) => toPage( path )} key={path}>{path}</Button>
+									<Route path={path} component={component} key={path}></Route>
 								);
 							} )
 						}
-					</div>
-				) : ( null )
-			}
+					</Switch>
+				</Suspense>
 
-			<Switch>
-				{
-					appRoute.map( ( { path, component } ) => {
-						return (
-							<Route path={path} component={component} key={path}></Route>
-						);
-					} )
-				}
-			</Switch>
+			</LayoutComponent>
 		</div>
 
 	);
 
 }
 
-export default withRouter( App );
+export default App;

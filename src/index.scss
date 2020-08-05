@@ -43,6 +43,9 @@ header.ant-layout-header{
 .ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::before, .ant-menu-submenu-inline > .ant-menu-submenu-title:hover .ant-menu-submenu-arrow::after {
   background: linear-gradient(to right, $green, $green);
 }
+.ant-menu-item:active, .ant-menu-submenu-title:active{
+  background: $green;
+}
 .ant-row{
   width: 100%;
 }

@@ -1,51 +1,15 @@
-.header{
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  padding: 0;
-}
-
-.content{
-  margin-top: 64px;
-}
-
-.logo{
-  float: left;
-  img:first-child{
-    margin-right: 20px;
-    margin-left: 20px;
-  }
-  span{
-    color: #fff;
-    margin-left: 20px;
-  }
-}
-
-.breadcrumb{
-  background: #f3f3f3;
-  height: 35px;
-  line-height: 35px;
-  display: flex;
-  padding-left: 20px;
-  border-bottom: 1px solid #ddd;
-}
-.sectionContent{
-  background: #fff;
-}
-
 .page{
   .title{
-    margin: 20px;
+    margin: $blockMargin;
   }
   .wrap{
-    margin: 20px;
-
+    margin: $blockMargin;
   }
 
   .line{
     height: 1px;
     border-bottom: 1px solid #ddd;
-    margin: 20px 0;
+    margin: $blockMargin 0;
   }
 }
 
