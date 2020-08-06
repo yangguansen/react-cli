@@ -393,13 +393,13 @@ module.exports = function(webpackEnv) {
                             '@svgr/webpack?-svgo,+titleProp,+ref![path]',
                         },
                       },
-                    },
-                  ],
+                    }
+                  ]
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
                 // directory for faster rebuilds.
-                cacheDirectory: true,
+                cacheDirectory: false,
                 // See #6846 for context on why cacheCompression is disabled
                 cacheCompression: false,
                 compact: isEnvProduction,
@@ -418,10 +418,10 @@ module.exports = function(webpackEnv) {
                 presets: [
                   [
                     require.resolve('babel-preset-react-app/dependencies'),
-                    { helpers: true },
+                    { helpers: true }
                   ],
                 ],
-                cacheDirectory: true,
+                cacheDirectory: false,
                 // See #6846 for context on why cacheCompression is disabled
                 cacheCompression: false,
                 
@@ -464,6 +464,7 @@ module.exports = function(webpackEnv) {
                 },
               }),
             },
+
             // Opt-in support for SASS (using .scss or .sass extensions).
             // By default we support SASS Modules with the
             // extensions .module.scss or .module.sass
@@ -484,6 +485,7 @@ module.exports = function(webpackEnv) {
               // See https://github.com/webpack/webpack/issues/6571
               sideEffects: true,
             },
+
             // Adds support for CSS Modules, but using SASS
             // using the extension .module.scss or .module.sass
             {
@@ -499,6 +501,32 @@ module.exports = function(webpackEnv) {
                 'sass-loader',
 								'sass-resources-loader'
               ),
+            },
+            // Include less-loader (exact settings may deviate depending on your building/bundling procedure)
+            {
+              test: /\.less$/,
+              use: [
+                { loader: "style-loader" },
+                { loader: "css-loader" },
+                {
+                  loader: "less-loader",
+                  options: {
+                    lessOptions: {
+                      modifyVars: {             // 修改antd主题变量，默认主题变量：https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
+                        'primary-color': '#86bc25',
+                        'link-color': '#86bc25',
+                        'border-radius-base': '2px',
+                        'layout-header-background': '#000',
+                        'menu-bg': '#000',
+                        'menu-item-color': '#fff',
+                        'menu-item-active-bg': '#2c2d27a6'
+                      },
+                      javascriptEnabled: true //This is important!
+                    }
+
+                  }
+                }
+              ]
             },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
@@ -519,7 +547,7 @@ module.exports = function(webpackEnv) {
             // ** STOP ** Are you adding a new loader?
             // Make sure to add the new loader(s) before the "file" loader.
           ],
-        },
+        }
       ],
     },
     plugins: [
