@@ -17,6 +17,7 @@
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "antd": "^4.4.3",
+    "axios": "^0.19.2",
     "babel-eslint": "10.1.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "8.1.0",
@@ -149,11 +150,14 @@
       "react-app"
     ],
     "plugins": [
-      ["import", {
-        "libraryName": "antd",
-        "libraryDirectory": "es",
-        "style": true
-      }]
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "libraryDirectory": "es",
+          "style": true
+        }
+      ]
     ]
   }
 }
