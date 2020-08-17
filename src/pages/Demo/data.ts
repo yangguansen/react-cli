@@ -54,7 +54,7 @@ export const columns = [
 
 export const dataList = [
 	{
-		a: '非比寻常（上海）有限公司',
+		a: 'XXX（上海）有限公司',
 		b: 'SO2007270003',
 		c: '货物类销售',
 		d: '客户二',
@@ -67,7 +67,7 @@ export const dataList = [
 		key: 1
 	},
 	{
-		a: '非比寻常（上海）有限公司',
+		a: 'XXX（上海）有限公司',
 		b: 'SO2007270003',
 		c: '货物类销售',
 		d: '客户二',
@@ -80,7 +80,7 @@ export const dataList = [
 		key: 2
 	},
 	{
-		a: '非比寻常（上海）有限公司',
+		a: 'XXX（上海）有限公司',
 		b: 'SO2007270003',
 		c: '货物类销售',
 		d: '客户二',
@@ -93,7 +93,7 @@ export const dataList = [
 		key: 3
 	},
 	{
-		a: '非比寻常（上海）有限公司',
+		a: 'XXX（上海）有限公司',
 		b: 'SO2007270003',
 		c: '货物类销售',
 		d: '客户二',
@@ -106,7 +106,7 @@ export const dataList = [
 		key: 4
 	},
 	{
-		a: '非比寻常（上海）有限公司',
+		a: 'XXX（上海）有限公司',
 		b: 'SO2007270003',
 		c: '货物类销售',
 		d: '客户二',
