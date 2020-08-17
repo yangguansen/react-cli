@@ -5,10 +5,10 @@ import bread from './data';
 
 const BreadComponent = () => {
 	return (
-		<Breadcrumb className={styles.breadcrumb}>
+		<Breadcrumb className={ styles.breadcrumb }>
 			{
 				bread.map( ( v, i ) => {
-					return <Breadcrumb.Item key={i}>{v}</Breadcrumb.Item>;
+					return <Breadcrumb.Item key={ i }>{ v }</Breadcrumb.Item>;
 				} )
 			}
 		</Breadcrumb>

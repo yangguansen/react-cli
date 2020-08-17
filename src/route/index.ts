@@ -2,7 +2,7 @@ import { lazy } from 'react';
 
 const UseStatePage = lazy( () => import( 'src/pages/UseState' ) );
 const UseContextPage = lazy( () => import( 'src/pages/UseContext' ) );
-const DemoPage = lazy( () => import( 'src/pages/Demo' ) );
+const DemoPage = lazy( () => import( 'src/pages/Demo/index.class' ) );
 const ReduxPage = lazy( () => import( 'src/pages/Redux' ) );
 
 

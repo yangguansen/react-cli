@@ -10,7 +10,7 @@ import {
 	ExportOutlined,
 } from '@ant-design/icons';
 import PropTypes from 'prop-types';
-import { getVersion } from 'src/services/demo';
+import { getVersion } from 'src/services/demo/index';
 
 const { Option } = Select;
 

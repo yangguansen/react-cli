@@ -1,8 +1,8 @@
-import axios, { AxiosResponse, AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios';
 import { message } from 'antd';
 
 axios.defaults.baseURL = 'http://localhost:3001';
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = 2000;
 axios.defaults.headers.post[ 'Content-Type' ] = 'application/x-www-form-urlencoded';
 
 const formatParams = ( params: any = {} ): string => {
@@ -23,24 +23,21 @@ const formatParams = ( params: any = {} ): string => {
 };
 
 function handleError( err: AxiosError | string ) {
+	let msg = '';
 	if ( err.toString().indexOf( 'timeout' ) > -1 ) {
-		message.error( '响应超时，请检查网络' );
+		msg = '响应超时，请检查网络';
+	} else {
+		msg = '网络请求异常';
 	}
+	message.error( msg );
+	return { status: -1, message: msg };
 }
 
-export const get = ( path: string, params?: { [ propName: string ]: any; } ): Promise<void | Object> => {
+export const get = ( path: string, params?: { [ propName: string ]: any; } ): Promise<any> => {
 	const paramsString = formatParams( params );
-	return axios.get( `${ path }?${ paramsString }` ).then( ( data: AxiosResponse ) => {
-		return data;
-	} ).catch( ( err: AxiosError | string ) => {
-		handleError( err );
-	} );
+	return axios.get( `${ path }?${ paramsString }` ).then( data => data.data ).catch( handleError );
 };
 
-export const post = ( path: string, params?: { [ propName: string ]: any; } ): Promise<void | Object> => {
-	return axios.post( path, params ).then( ( data: AxiosResponse ) => {
-		console.log( data );
-	} ).catch( ( err: AxiosError | string ) => {
-		handleError( err );
-	} );
+export const post = ( path: string, params?: { [ propName: string ]: any; } ): Promise<any> => {
+	return axios.post( path, params ).then( data => data.data ).catch( handleError );
 };
