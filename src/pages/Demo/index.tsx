@@ -113,7 +113,7 @@ class ContentComponent extends React.Component<RouteComponentProps> {
 					<div className={ styles.line }></div>
 
 					<Row>
-						<Col span={ 12 } style={ { textAlign: 'left' } }>
+						<Col span={ 18 } style={ { textAlign: 'left' } }>
 							<Button type='primary' icon={ <PlusCircleOutlined/> }>
 								新建
 							</Button>
@@ -124,7 +124,7 @@ class ContentComponent extends React.Component<RouteComponentProps> {
 								模板导入
 							</Button>
 						</Col>
-						<Col span={ 12 } style={ { textAlign: 'right' } }>
+						<Col span={ 6 } style={ { textAlign: 'right' } }>
 							<Button icon={ <ExportOutlined/> } className='grey-button'>
 								导出
 							</Button>
