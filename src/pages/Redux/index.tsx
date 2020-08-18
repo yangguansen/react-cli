@@ -45,6 +45,7 @@ function ReduxPage( props: any ) {
 	);
 }
 
+//	映射state到当前组件
 const mapStateToProps = ( state: any ) => {
 	return {
 		count: state.demoState.count,
@@ -52,6 +53,7 @@ const mapStateToProps = ( state: any ) => {
 	};
 };
 
+//	映射dispatch到当前组件
 const mapDispatchToProps = ( dispatch: any ) => {
 	return {
 		addCount: ( count: number ) => {

@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from 'src/store/index';
 
+//	声明全局store
 let store = createStore( rootReducer );
 console.log( store.getState() );
 
