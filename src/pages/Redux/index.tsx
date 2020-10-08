@@ -20,7 +20,7 @@ function ReduxPage( props: any ) {
 		return function willUnMount() {
 			console.log( 'will unmount' );
 		};
-	} );
+	}, [] );
 
 
 	/**

@@ -5,10 +5,12 @@
 import { combineReducers } from 'redux';
 import demoReducers from './demo/reducers';
 import moduleTwoReducers from './moduleTwo/reducers';
+import tabReducers from './tabs/reducers';
 
 const rootReducer = combineReducers( {
 	demoState: demoReducers,
-	moduleTwo: moduleTwoReducers
+	moduleTwo: moduleTwoReducers,
+	tabStore: tabReducers
 } );
 
 export default rootReducer;

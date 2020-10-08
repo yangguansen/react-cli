@@ -11,7 +11,7 @@ import {
 } from '@ant-design/icons';
 import PropTypes from 'prop-types';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { getVersion } from 'src/services/demo/index';
+// import { getVersion } from 'src/services/demo/index';
 
 const { Option } = Select;
 
@@ -57,13 +57,13 @@ class ContentComponent extends React.Component<RouteComponentProps> {
 	//	生命周期
 	async componentDidMount() {
 		//	发请求
-		const info = await getVersion( {
-			lang: 'cn',
-			appPlatform: '0',
-			version: '0.0.161',
-		} );
-		console.log( info );
-		if ( info.status === 1 ) console.log( info.message );
+		// const info = await getVersion( {
+		// 	lang: 'cn',
+		// 	appPlatform: '0',
+		// 	version: '0.0.161',
+		// } );
+		// console.log( info );
+		// if ( info.status === 1 ) console.log( info.message );
 
 		//	从props取route参数
 		const props = this.props;

@@ -22,21 +22,18 @@ code {
   width: 100%;
 
   .ant-layout-sider{
-    position: fixed;
-    top: 64px;
     height: 100vh;
     z-index: 1;
   }
 }
 
 .ant-layout.ant-layout-has-sider > .ant-layout{
-  margin-left: 230px;
   transition: all 0.2s;
 }
 
 @media screen and (max-width: 991px) {
-  .ant-layout.ant-layout-has-sider > .ant-layout {
-    margin-left: 0;
+  .ant-layout.ant-layout-has-sider > .ant-layout-sider {
+    position: fixed;
   }
 }
 /* 全局样式 end*/
