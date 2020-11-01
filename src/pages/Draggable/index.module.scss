@@ -1,0 +1,9 @@
+.from_section, .to_section{
+  border: 1px solid #eee;
+  width: 200px;
+}
+
+.drag_section{
+  display: flex;
+  justify-content: space-evenly;
+}
