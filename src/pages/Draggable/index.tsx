@@ -4,6 +4,7 @@ import DragItem from './components/dragItem';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import DropArea from './components/dropArea';
+import Demo from 'src/pages/Draggable/components/tree';
 
 export default class DraggableComponent extends React.Component {
 
@@ -70,6 +71,7 @@ export default class DraggableComponent extends React.Component {
 	render() {
 		return (
 			<div className={styles.drag_section}>
+
 				<DndProvider backend={HTML5Backend}>
 					<div className={styles.to_section}>
 						<DropArea to={this.state.to} handleSort={this.handleSort}></DropArea>
@@ -82,6 +84,8 @@ export default class DraggableComponent extends React.Component {
 							) )
 						}
 					</div>
+
+					<Demo></Demo>
 				</DndProvider>
 
 			</div>
